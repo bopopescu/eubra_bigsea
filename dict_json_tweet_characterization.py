@@ -186,9 +186,9 @@ def operations_mentions(database, output_information, city_name):
 def operations_retweet(database, output_information, city_name):
 
     arq = open(output_information+"_"+city_name+'.txt', 'a+')
-    arq.write("#### mentionss of the selected users \n")
+    arq.write("#### Retweet of the selected users \n")
     arq.write("ID user\t # Retweets\n")
-    print "#### mentionss of the selected users"
+    print "#### Retweet of the selected users"
 
     # Convert the arg city_name to a variable
     count_city = "count_"+city_name
@@ -203,13 +203,11 @@ def operations_retweet(database, output_information, city_name):
             try:
                 #Read in one line of the file, convert it into a json object 
                 tweet = json.loads(line.strip())
+
                 if 'text' in tweet:
-                    users_id_mention = [user_mention['id'] for user_mention in tweet['entities']['user_mentions']]
-                    
-                    for usersx_id in users_id_mention:
-                        # Compare to user_id
-                        if(usersx_id == user_id):
-                            temp = temp + 1
+                    user_retweeted =  tweet['retweeted_status']['user']['id']
+                    if(int(user_retweeted) == user_id):
+                        temp = temp + 1
             except:
                 # read in a line is not in JSON format (sometimes error occured)
                 continue
@@ -217,10 +215,10 @@ def operations_retweet(database, output_information, city_name):
         result = str(user_id) +"\t"+ str(temp) +"\n"
         # print test
         arq.write(result)
-        # Print on Console the total of tweets mentions of the user
+        # Print on Console the total of tweets of the user
         # print "User_id\t", user_id , "\t Qtd tweets \t", temp
         tweets_file.close()    
-    arq.close()    
+arq.close() 
 
 
 

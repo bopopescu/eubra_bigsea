@@ -54,7 +54,7 @@ def get_parameters():
     global args
     parser = argparse.ArgumentParser(description='This program retrieve from MongoDB and deal with json tweets.')
     parser.add_argument('-s','--server', help='Name of the MongoDB server', required=True)
-    parser.add_argument('-p','--persistence', help='Name of the MongoDB persistence slave', required=False)
+    parser.add_argument('-p','--persistence', help='Name of the MongoDB persistence subordinate', required=False)
     parser.add_argument('-d','--database', help='Name of the MongoDB database', required=True)
     parser.add_argument('-c','--collection', help='Name of the MongoDB collection', required=True)
     parser.add_argument('-sd','--startDate', help='The date when a project or task is scheduled to begin/start. Ex: "AAAA-MM-DD HH:MM:SS" (ISO-8601)', required=True)
